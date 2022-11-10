@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile</title>
+
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="profile.css" />
+    <script src="dropdown.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Workout Journal</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/logout"
+              ><span class="glyphicon glyphicon-log-out"></span> Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <h1>Profile</h1>
+      <div id="con">
+        <div class="row">
+          <label>Select 1 or more workouts</label>
+          <select
+            name="field1"
+            id="field1"
+            multiple
+            onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
+            multiselect-hide-x="true"
+          >
+            <option selected  value="Run">Run</option>
+            <option value="Walk">Walk</option>
+            <option value="Treadmil">Treadmil run</option>
+            <option value="Biking">biking</option>
+            <option value="Triceps">Triceps</option>
+            <option selected value="Chest">Chest</option>
+            <option value="Biceps">Biceps</option>
+            <option value="Back">Back</option>
+            <option value="Legs">Legs</option>
+            <option value="Core">Core</option>
+          </select>
+
+          <label>any note you want to add...</label>
+          <input type="text" id="notes" value="Feeling " />
+
+          <label>How did you feel</label>
+          <select name="" id="emoji">
+            <option value="😀">😀</option>
+            <option value="😟">😟</option>
+            <option value="🤢">🤢</option>
+            <option value="💪">💪</option>
+            <option value="😵">😵</option>
+          </select>
+
+          <label for=""> Select Date</label>
+
+          <input type="date" id="date" name="" value="" />
+          <br />
+        </div>
+        <button class="add">Add Workout</button>
+      </div>
+
+      <div>
+
+        <h1>Previous Workouts</h1>
+      
+
+        <% for(var i=0; i<result.length; i++) {%>
+          <div id="con">
+
+          <div class="row">
+            <p>
+            <span><%= result[i].date %></span> <br>
+            <span>Notes: </span> <span><%= result[i].notes %> : <%= result[i].emoji %></span>
+            <span>Workout consisted of: </span>
+            <% for(var j=0; j<result[i].workouts.length; j++) {%>
+              <span><%= result[i].workouts[j] %>, </span>
+              <% } %>
+            </p>
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn" data-index="<%= result[i]._id %>" data-id="<%= result[i]._id %>">Edit/Update Workout</button>
+
+            <!-- The Modal -->
+            <div id="<%= result[i]._id %>" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+           <span class="close" data-id="<%= result[i]._id %>"">&times;</span>
+           
+           <div id="con">
+            <div class="row">
+              <label>Select 1 or more workouts</label>
+              <select
+                name="field2"
+                id="field<%=i %>"
+                multiple
+                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
+                multiselect-hide-x="true"
+              >
+                <option selected value="Run">Run</option>
+                <option value="Treadmil">Treadmil run</option>
+                <option value="Biking">biking</option>
+                <option value="Triceps">Triceps</option>
+                <option value="Biceps">Biceps</option>
+                <option value="Back">Back</option>
+                <option value="Legs">Legs</option>
+                <option value="Core">Core</option>
+              </select>
+    
+              <label>any note you want to add...</label>
+              <input type="text" id="notes<%=i %>" value="Feeling " />
+    
+              <label>How did you feel</label>
+              <select name="" id="emoji<%=i %>">
+                <option value="😀">😀</option>
+                <option value="😟">😟</option>
+                <option value="🤢">🤢</option>
+                <option value="💪">💪</option>
+                <option value="😵">😵</option>
+              </select>
+    
+              <label for=""> Select Date</label>
+    
+              <input type="date" id="date<%=i %>" name="" value="" />
+              <br />
+            </div>
+            <button id="update" data-index="<%= i %>" data-id="<%= result[i]._id %>">Update Workout</button>
+          </div>
+
+          </div>
+
+        </div>
+            <button class="trash" data-id="<%= result[i]._id %>" > Delete Workout</button>
+
+          </div>
+        </div>
+    
+           <% } %>
+      
+          </div>
+      
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

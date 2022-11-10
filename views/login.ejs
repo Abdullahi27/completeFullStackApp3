@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Login</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+ 
+    <div class="main-w3layouts wrapper">
+		<h1>Login in</h1>
+		<div class="main-agileinfo">
+            <% if (message.length > 0) { %>
+                <div class="alert alert-danger"><%= message %></div>
+                <% } %>
+			<div class="agileits-top">
+				<form action="/login" method="post">
+					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+					
+					<input type="submit" value="Login In">
+				</form>
+				<p>Don't have an Account? <a href="/signup"> Sign Up Now!</a></p>
+                <p><a href="/"> Return to home</a></p>
+			</div>
+		</div>
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

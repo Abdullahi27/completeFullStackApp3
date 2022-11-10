@@ -1,0 +1,20 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+}
+img{
+  height: 200px;
+}
+
+
+.hidden{
+  display: none;
+}
+
+.hidden2{
+  display: none;
+}
+
+#phone{
+  width: 100% !important;
+}
